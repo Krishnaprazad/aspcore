@@ -1,0 +1,18 @@
+﻿@page
+@model WebApplication1.Pages.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create Employee</h2>
+<form method="post">
+    <div>
+        Name :
+        <input type="text" asp-for="Employee.Name" />
+        <span asp-validation-for="Employee.Name">Provide proper employee name</span>
+        <div>
+            <button type="submit">Add Employee</button>
+        </div>
+    </div>
+</form>
+
