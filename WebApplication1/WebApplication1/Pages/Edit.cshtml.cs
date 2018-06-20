@@ -21,9 +21,15 @@ namespace WebApplication1.Pages
 
         public EditModel(AppDbContext dbContext) { _dbContext = dbContext; }
 
-        public async Task OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             Employee = await _dbContext.Employees.FindAsync(id);
+
+            if (Employee == null)
+            {
+                return RedirectToPage("/Index");
+            }
+            return Page();
 
         }
 
@@ -44,7 +50,7 @@ namespace WebApplication1.Pages
             catch (DbUpdateConcurrencyException e)
             {
 
-                throw;
+                throw new Exception($"Could not edit {Employee.Name}.");
             }
             //Save changes
             
