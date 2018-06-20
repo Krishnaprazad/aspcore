@@ -33,10 +33,14 @@ namespace WebApplication1.Pages
 
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
+            //find out the employee
             var employee = _dbContext.Employees.Find(id);
+
+            //remove the employee
             _dbContext.Employees.Remove(employee);
             try
             {
+                //save the changes
                 await _dbContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException e)

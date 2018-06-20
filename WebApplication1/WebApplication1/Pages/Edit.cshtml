@@ -1,0 +1,13 @@
+﻿@page "{id:int}"
+@model WebApplication1.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit - @Model.Employee.Name</h2>
+<form method="post">
+    <label asp-for="@Model.Employee.Id">@Model.Employee.Id</label>
+    <input type="text" asp-for="@Model.Employee.Name" />
+    <button type="submit" asp-route-id="@Model.Employee.Id"></button>
+</form>
+
