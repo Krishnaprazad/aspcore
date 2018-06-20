@@ -33,7 +33,7 @@ namespace WebApplication1.Pages
             //Save changes
             await _dbContext.SaveChangesAsync();
 
-            Message = @"Employee {Employee.Name} added successfully.";
+            //Message = @"Employee {Employee.Name} added successfully.";
 
             return RedirectToPage("/Index");
         }

@@ -19,14 +19,14 @@
             @foreach (var employee in Model.Employees)
             {
             <tr>
-                <td><input type="hidden" asp-for="@employee.EmpId" />@employee.EmpId</td>
+                <td><input type="hidden" asp-for="@employee.Id" />@employee.Id</td>
                 <td>@employee.Name</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td><a asp-page="./Edit" asp-route-id="@employee.Id">Edit</a></td>
+                <td><button type="submit" asp-page-handler="delete" asp-route-id="@employee.Id">Delete</button></td>
             </tr>
             }
 
         </tbody>
     </table>
-    <a asp-route="./Create">Create</a>
+    <a asp-page="./Create">Create</a>
 </form>

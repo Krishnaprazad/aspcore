@@ -30,5 +30,21 @@ namespace WebApplication1.Pages
         {
             Employees = await _dbContext.Employees.AsNoTracking().ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var employee = _dbContext.Employees.Find(id);
+            _dbContext.Employees.Remove(employee);
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+
+                throw new Exception(@"Customer {employee.Name} could not be deleted.");
+            }
+            return RedirectToPage();
+        }
     }
 }
